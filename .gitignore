@@ -1,0 +1,18 @@
+# Dependencies and build output
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+
+# Local configuration and data
+.env*
+!.env.example
+.cardeo/
+
+# Local documentation and generated artifacts
+docs/
+.artifacts/
+.taste-skill/
+
+# OS files
+.DS_Store
