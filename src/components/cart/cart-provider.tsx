@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/app/components/i18n/locale-provider";
+import { useI18n } from "@/components/i18n/locale-provider";
 import {
   createContext,
   useContext,

@@ -1,9 +1,9 @@
 "use client";
-import { useI18n } from "@/app/components/i18n/locale-provider";
+import { useI18n } from "@/components/i18n/locale-provider";
 import { useState } from "react";
 import { ShoppingBag } from "lucide-react";
-import { useCart } from "@/app/components/cart/cart-provider";
-import { Quantity } from "@/app/components/cart/quantity";
+import { useCart } from "@/components/cart/cart-provider";
+import { Quantity } from "@/components/cart/quantity";
 import { money, type Product } from "@/lib/types";
 export function BuyCard({ product }: { product: Product }) {
   const { t } = useI18n();
