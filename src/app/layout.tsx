@@ -1,10 +1,10 @@
+import "./_common/globals.css";
 import { getI18n } from "@/server/i18n-server";
-import { LocaleProvider } from "@/app/providers/locale-provider";
+import { LocaleProvider } from "@/app/_common/providers/locale-provider";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { CartProvider, CatalogueContent } from "@/app/providers/cart-provider";
-import { Header, MerchantMark } from "@/app/widgets/header";
-import "./globals.css";
+import { CartProvider, CatalogueContent } from "@/app/_common/providers/cart-provider";
+import { Header } from "@/app/_common/sections/header";
+import { Footer } from "@/app/_common/sections/footer";
 export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getI18n();
@@ -31,26 +31,7 @@ export default async function RootLayout({
             <main id="main">
               <CatalogueContent>{children}</CatalogueContent>
             </main>
-            <footer className="site-footer">
-              <div className="container footer-main">
-                <div className="footer-brand">
-                  <MerchantMark />
-                  <div>
-                    <strong>Cardeo</strong>
-                    <p>{t("aGoodCardForEveryClimb")}</p>
-                  </div>
-                </div>
-                <div className="footer-links">
-                  <Link href="/shop">{t("browseCards")}</Link>
-                  <Link href="/about">{t("aboutAndCredits")}</Link>
-                </div>
-              </div>
-              <div className="container footer-bottom">
-                <span>
-                  {t("fanProjectAttribution")}</span>
-                <span>{t("demoOnlyNoRealTransactions")}</span>
-              </div>
-            </footer>
+            <Footer />
           </CartProvider>
         </LocaleProvider>
       </body>
