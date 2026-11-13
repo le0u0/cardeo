@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { useCart } from "@/app/_common/providers/cart-provider";
 import { ProductCard } from "@/app/_common/widgets/product-card";
+import "./featured-picks.css";
 
 export function FeaturedPicks({ referenceArt }: { referenceArt: boolean }) {
   const { t } = useI18n();

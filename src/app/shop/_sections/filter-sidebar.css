@@ -1,0 +1,7 @@
+.filter-sidebar { border-right: 1px solid var(--line); padding-right: 24px; }
+.filter-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 24px; }
+.filter-heading h2 { display: flex; align-items: center; gap: 8px; font-family: var(--font-text); font-size: 16px; }
+.filter-heading .icon-button { width: 32px; min-height: 44px; }
+@media (max-width: 1023px) {
+  .filter-sidebar { display: none; }
+}

@@ -2,6 +2,7 @@
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { useCart } from "@/app/_common/providers/cart-provider";
 import { CartRow } from "@/app/cart/_widgets/cart-row";
+import "./cart-list.css";
 
 export function CartList({
   unavailable,

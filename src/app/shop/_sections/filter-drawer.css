@@ -1,0 +1,2 @@
+.drawer-actions { display: flex; gap: 12px; padding-top: 32px; margin-top: auto; }
+.drawer-actions .primary { flex: 1; }

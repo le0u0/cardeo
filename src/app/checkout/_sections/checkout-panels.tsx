@@ -1,6 +1,7 @@
 "use client";
 import { MapPin, Package, ShieldCheck } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
+import "./checkout-panels.css";
 
 export function CheckoutPanels({
   outcome,

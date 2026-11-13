@@ -77,7 +77,7 @@ The `docs/` directory is local and ignored by Git; these files are not included 
 
 ## Project structure
 
-- `src/app/`: route folders, each with its own `_sections/` (blocks of the page) and `_widgets/` (pieces only that route uses); `_home/` (home sections); `_common/` (sections, widgets and providers shared by several routes, plus global styles). `api/` holds the route handlers.
+- `src/app/`: route folders, each with its own `_sections/` (blocks of the page) and `_widgets/` (pieces only that route uses); `_home/` (home sections); `_common/` (sections, widgets and providers shared by several routes). Every component has its own `.css` beside it; `_common/globals.css` only holds base styles and rules shared by several components. `api/` holds the route handlers.
 - `src/server/`: server-side API handlers, database access, checkout validation and language lookup.
 - `src/lib/`: shared types and translations.
 - `tests/integration/`: PostgreSQL integration tests.

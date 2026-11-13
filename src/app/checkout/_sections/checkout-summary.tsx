@@ -3,6 +3,7 @@ import { ArrowRight, LoaderCircle, ShieldCheck } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { useCart } from "@/app/_common/providers/cart-provider";
 import { money } from "@/lib/types";
+import "./checkout-summary.css";
 
 export function CheckoutSummary({
   total,

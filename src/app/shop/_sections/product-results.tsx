@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { ProductCard } from "@/app/_common/widgets/product-card";
 import { type Product } from "@/lib/types";
+import "./product-results.css";
 export function ProductResults({
   products,
   referenceArt,

@@ -1,6 +1,7 @@
 "use client";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
+import "./results-toolbar.css";
 type Update = (
   entries: Record<string, string | number>,
   replace?: boolean,

@@ -1,0 +1,4 @@
+.related-section { border-top: 1px solid var(--line); padding-top: 48px; }
+@media (max-width: 639px) {
+  .related-section { padding-top: 32px; }
+}

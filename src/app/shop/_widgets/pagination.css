@@ -1,0 +1,6 @@
+.pagination { display: flex; justify-content: center; gap: 8px; margin-top: 48px; }
+.pagination button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); background: transparent; font-size: 14px; }
+.pagination button[aria-current] { background: var(--ink); color: white; border-color: var(--ink); }
+@media (max-width: 639px) {
+  .pagination { margin-top: 32px; }
+}

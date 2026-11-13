@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, Sword, Leaf, Orbit, Crown, Skull } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { CHARACTERS } from "@/lib/types";
+import "./character-collections.css";
 
 const characterIcons = [Sword, Leaf, Orbit, Crown, Skull];
 

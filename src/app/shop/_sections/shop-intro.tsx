@@ -1,5 +1,6 @@
 "use client";
 import { useI18n } from "@/app/_common/providers/locale-provider";
+import "./shop-intro.css";
 export function ShopIntro() {
   const { t } = useI18n();
   return (

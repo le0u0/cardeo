@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/app/_common/providers/cart-provider";
 import { money } from "@/lib/types";
+import "./header.css";
 export function MerchantMark() {
   return (
     <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">

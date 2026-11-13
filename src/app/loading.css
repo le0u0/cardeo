@@ -1,0 +1,6 @@
+.loading-shelves { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 24px; }
+.loading-card { height: 320px; border-radius: 16px; background: var(--raised); }
+@media (max-width: 639px) {
+  .loading-shelves { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .loading-card { height: 240px; }
+}

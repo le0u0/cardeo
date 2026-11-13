@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import type { CartItem, Product } from "@/lib/types";
+import "./cart-provider.css";
 const KEY = "cardeo.cart.v1";
 let memory = "[]";
 let storageUnavailable = false;

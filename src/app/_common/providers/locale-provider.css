@@ -1,0 +1,9 @@
+.language-switch { display: inline-flex; align-items: center; gap: 2px; font-size: 14px; }
+.language-switch button { min-height: 44px; padding: 8px 6px; border: 0; background: transparent; color: var(--muted); }
+.language-switch button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+@media (max-width: 639px) {
+  .language-switch { font-size: 13px; }
+}
+@media (max-width: 359px) {
+  .language-switch button { padding-inline: 4px; }
+}

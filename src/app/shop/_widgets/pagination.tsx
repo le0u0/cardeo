@@ -1,6 +1,7 @@
 "use client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
+import "./pagination.css";
 export function Pagination({
   page,
   pages,

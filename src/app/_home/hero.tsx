@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { useCart } from "@/app/_common/providers/cart-provider";
 import { CardArt } from "@/app/_common/widgets/card-art";
+import "./hero.css";
 
 export function Hero({ referenceArt }: { referenceArt: boolean }) {
   const { t } = useI18n();

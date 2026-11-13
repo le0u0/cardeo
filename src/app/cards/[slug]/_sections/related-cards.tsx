@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { getI18n } from "@/server/i18n-server";
 import { ProductCard } from "@/app/_common/widgets/product-card";
 import type { Product } from "@/lib/types";
+import "./related-cards.css";
 
 export async function RelatedCards({
   product,

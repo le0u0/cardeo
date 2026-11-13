@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { CartProvider, CatalogueContent } from "@/app/_common/providers/cart-provider";
 import { Header } from "@/app/_common/sections/header";
 import { Footer } from "@/app/_common/sections/footer";
+import "./layout.css";
 export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getI18n();

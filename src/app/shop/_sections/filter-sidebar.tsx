@@ -2,6 +2,7 @@
 import { SlidersHorizontal, RotateCcw } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { FilterFields, type Filters } from "@/app/shop/_widgets/filter-fields";
+import "./filter-sidebar.css";
 export function FilterSidebar({
   filters,
   change,

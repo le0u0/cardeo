@@ -6,6 +6,7 @@ import { useCart } from "@/app/_common/providers/cart-provider";
 import { CardArt } from "@/app/_common/widgets/card-art";
 import { Quantity } from "@/app/_common/widgets/quantity";
 import { money } from "@/lib/types";
+import "./cart-row.css";
 
 export function CartRow({
   productId,

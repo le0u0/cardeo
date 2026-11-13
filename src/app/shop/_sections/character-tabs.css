@@ -1,0 +1,10 @@
+.character-tabs { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 32px; }
+.character-tabs button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 8px; background: transparent; font-size: 14px; }
+.character-tabs button:hover { background: var(--raised); }
+.character-tabs button.active { color: white; background: var(--ink); border-color: var(--ink); }
+.character-tabs small { font-size: 13px; opacity: 0.8; }
+@media (max-width: 639px) {
+  .character-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-bottom: 24px; }
+  .character-tabs button { padding-inline: 8px; justify-content: flex-start; }
+  .character-tabs small { margin-left: auto; }
+}

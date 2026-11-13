@@ -3,6 +3,7 @@ import { type RefObject } from "react";
 import { X } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { FilterFields, type Filters } from "@/app/shop/_widgets/filter-fields";
+import "./filter-drawer.css";
 type Update = (entries: Record<string, string | number>) => void;
 export function FilterDrawer({
   drawer,

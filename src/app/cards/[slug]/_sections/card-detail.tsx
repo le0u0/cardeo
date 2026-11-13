@@ -4,6 +4,7 @@ import { getI18n } from "@/server/i18n-server";
 import { CardArt } from "@/app/_common/widgets/card-art";
 import { BuyCard } from "@/app/cards/[slug]/_widgets/buy-card";
 import type { Product } from "@/lib/types";
+import "./card-detail.css";
 
 export async function CardDetail({
   product,

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getI18n } from "@/server/i18n-server";
 import { MerchantMark } from "@/app/_common/sections/header";
+import "./footer.css";
 
 export async function Footer() {
   const { t } = await getI18n();

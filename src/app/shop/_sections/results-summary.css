@@ -1,0 +1,9 @@
+.results-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 72px; color: var(--muted); font-size: 14px; }
+.results-meta > p { display: flex; flex-wrap: wrap; gap: 4px; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.filter-chips button { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--raised); font-size: 14px; }
+@media (max-width: 639px) {
+  .results-meta { min-height: 80px; font-size: 13px; }
+  .results-meta .text-button { font-size: 13px; flex-shrink: 0; }
+  .results-meta > p { flex-direction: column; }
+}

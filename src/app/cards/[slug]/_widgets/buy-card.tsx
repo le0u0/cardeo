@@ -5,6 +5,7 @@ import { ShoppingBag } from "lucide-react";
 import { useCart } from "@/app/_common/providers/cart-provider";
 import { Quantity } from "@/app/_common/widgets/quantity";
 import { money, type Product } from "@/lib/types";
+import "./buy-card.css";
 export function BuyCard({ product }: { product: Product }) {
   const { t } = useI18n();
   const [quantity, setQuantity] = useState(1);

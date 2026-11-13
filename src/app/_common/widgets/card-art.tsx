@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Sword, Leaf, Orbit, Crown, Skull } from "lucide-react";
 import type { Product } from "@/lib/types";
+import "./card-art.css";
 const symbols = {
   Ironclad: Sword,
   Silent: Leaf,

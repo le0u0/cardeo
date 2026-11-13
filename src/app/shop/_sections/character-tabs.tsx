@@ -2,6 +2,7 @@
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { useCart } from "@/app/_common/providers/cart-provider";
 import { CHARACTERS } from "@/lib/types";
+import "./character-tabs.css";
 export function CharacterTabs({
   selected,
   onChange,

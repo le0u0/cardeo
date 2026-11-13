@@ -1,0 +1,4 @@
+.quantity { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--control-line); border-radius: 8px; }
+.quantity button { display: grid; place-items: center; width: 44px; height: 46px; background: transparent; border: 0; }
+.quantity button:hover:not(:disabled) { background: var(--raised); }
+.quantity output { min-width: 24px; text-align: center; font-size: 16px; font-variant-numeric: tabular-nums; }

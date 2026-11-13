@@ -13,6 +13,7 @@ import { ResultsToolbar } from "@/app/shop/_sections/results-toolbar";
 import { ResultsSummary } from "@/app/shop/_sections/results-summary";
 import { ProductResults } from "@/app/shop/_sections/product-results";
 import { FilterDrawer } from "@/app/shop/_sections/filter-drawer";
+import "./shop.css";
 export function Shop({
   referenceArt,
 }: {

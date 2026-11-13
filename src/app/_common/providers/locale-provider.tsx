@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import { createI18n, LOCALE_COOKIE, parseLocale, type Locale } from "@/lib/i18n";
+import "./locale-provider.css";
 
 const LocaleContext = createContext(createI18n("zh-Hant"));
 const subscribe = () => () => {};

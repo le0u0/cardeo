@@ -1,0 +1,16 @@
+.buy-card { margin-top: 32px; padding-block: 24px; border-block: 1px solid var(--line); }
+.buy-price { display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; }
+.buy-price strong { font-size: 32px; font-weight: 500; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.buy-price span { font-size: 14px; color: var(--muted); }
+.buy-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+.buy-actions > .button { flex: 1; }
+@media (max-width: 1023px) {
+  .buy-actions > .button { flex-basis: 100%; }
+}
+@media (max-width: 767px) {
+  .buy-actions > .button { flex-basis: auto; }
+}
+@media (max-width: 639px) {
+  .buy-actions { gap: 12px; }
+  .buy-actions > .button { flex-basis: 100%; }
+}

@@ -5,6 +5,7 @@ import { Plus, Check } from "lucide-react";
 import { CardArt } from "@/app/_common/widgets/card-art";
 import { useCart } from "@/app/_common/providers/cart-provider";
 import { money, type Product } from "@/lib/types";
+import "./product-card.css";
 export function ProductCard({
   product,
   referenceArt,

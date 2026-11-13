@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { type Character } from "@/lib/types";
 import { type Filters } from "@/app/shop/_widgets/filter-fields";
+import "./results-summary.css";
 export function ResultsSummary({
   matchCount,
   page,

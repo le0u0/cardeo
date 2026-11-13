@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Check, ArrowRight, Copy } from "lucide-react";
 import { money, type Receipt } from "@/lib/types";
 import { useCart } from "@/app/_common/providers/cart-provider";
+import "./receipt.css";
 export function ReceiptView({ receipt }: { receipt: Receipt }) {
   const { t, locale } = useI18n();
   const cart = useCart();

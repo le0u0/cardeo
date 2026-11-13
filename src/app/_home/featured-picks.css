@@ -1,0 +1,4 @@
+.featured-section { padding-block: 0 96px; }
+@media (max-width: 639px) {
+  .featured-section { padding-bottom: 64px; }
+}

@@ -2,6 +2,7 @@
 import { useI18n } from "@/app/_common/providers/locale-provider";
 import { CHARACTERS, type Character } from "@/lib/types";
 import { useCart } from "@/app/_common/providers/cart-provider";
+import "./filter-fields.css";
 export type Filters = { character: string; max: number };
 export function FilterFields({
   value,
