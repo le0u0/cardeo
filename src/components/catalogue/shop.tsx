@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/providers/locale-provider";
+import { useI18n } from "@/components/i18n/locale-provider";
 import { useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
 import {
@@ -11,8 +11,8 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { CHARACTERS, type Character } from "@/lib/types";
-import { useCart } from "@/providers/cart-provider";
-import { ProductCard } from "@/widgets/product-card";
+import { useCart } from "@/components/cart/cart-provider";
+import { ProductCard } from "@/components/catalogue/product-card";
 type Filters = { character: string; max: number };
 function Fields({
   value,

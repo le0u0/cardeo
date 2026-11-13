@@ -1,9 +1,9 @@
 "use client";
-import { useI18n } from "@/providers/locale-provider";
+import { useI18n } from "@/components/i18n/locale-provider";
 import Link from "next/link";
 import { Plus, Check } from "lucide-react";
-import { CardArt } from "@/widgets/card-art";
-import { useCart } from "@/providers/cart-provider";
+import { CardArt } from "@/components/catalogue/card-art";
+import { useCart } from "@/components/cart/cart-provider";
 import { money, type Product } from "@/lib/types";
 export function ProductCard({
   product,

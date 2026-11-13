@@ -1,5 +1,5 @@
 import { getI18n } from "@/server/i18n-server";
-import { CartPage } from "@/views/cart-page";
+import { CartPage } from "@/components/cart/cart-page";
 export async function generateMetadata() {
   const { t } = await getI18n();
   return { title: t("bag") };

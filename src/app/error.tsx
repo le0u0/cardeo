@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/providers/locale-provider";
+import { useI18n } from "@/components/i18n/locale-provider";
 export default function ErrorPage({ reset }: { reset: () => void }) {
   const { t } = useI18n();
   return (
