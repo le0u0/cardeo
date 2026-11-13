@@ -1,6 +1,6 @@
 import { getI18n } from "@/server/i18n-server";
 import { Suspense } from "react";
-import { Shop } from "@/components/catalogue/shop";
+import { Shop } from "@/views/shop";
 export async function generateMetadata() {
   const { t } = await getI18n();
   return { title: t("browseCards") };

@@ -1,5 +1,5 @@
 import { getI18n } from "@/server/i18n-server";
-import { CheckoutPage } from "@/components/checkout/checkout-page";
+import { CheckoutPage } from "@/views/checkout-page";
 export async function generateMetadata() {
   const { t } = await getI18n();
   return { title: t("demoCheckout") };

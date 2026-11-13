@@ -1,10 +1,10 @@
 "use client";
-import { LanguageSwitch, useI18n } from "@/components/i18n/locale-provider";
+import { LanguageSwitch, useI18n } from "@/providers/locale-provider";
 import Link from "next/link";
 import { ShoppingBag, X, Menu, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useCart } from "@/components/cart/cart-provider";
+import { useCart } from "@/providers/cart-provider";
 import { money } from "@/lib/types";
 export function MerchantMark() {
   return (

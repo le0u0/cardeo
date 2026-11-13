@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/components/i18n/locale-provider";
+import { useI18n } from "@/providers/locale-provider";
 import Image from "next/image";
 import { useState } from "react";
 import { Sword, Leaf, Orbit, Crown, Skull } from "lucide-react";

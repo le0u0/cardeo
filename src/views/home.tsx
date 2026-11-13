@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Sword, Leaf, Orbit, Crown, Skull } from "lucide-react";
-import { useI18n } from "@/components/i18n/locale-provider";
-import { useCart } from "@/components/cart/cart-provider";
-import { CardArt } from "@/components/catalogue/card-art";
-import { ProductCard } from "@/components/catalogue/product-card";
+import { useI18n } from "@/providers/locale-provider";
+import { useCart } from "@/providers/cart-provider";
+import { CardArt } from "@/widgets/card-art";
+import { ProductCard } from "@/widgets/product-card";
 import { CHARACTERS } from "@/lib/types";
 
 const characterIcons = [Sword, Leaf, Orbit, Crown, Skull];
