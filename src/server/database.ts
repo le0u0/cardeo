@@ -3,7 +3,7 @@ import { cache } from "react";
 import { readFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import type { PGlite } from "@electric-sql/pglite";
-import type { Product, CheckoutInput, CheckoutResult } from "./types";
+import type { Product, CheckoutInput, CheckoutResult } from "../lib/types";
 import { fingerprint } from "./checkout";
 
 const globalDb = globalThis as typeof globalThis & {

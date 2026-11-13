@@ -1,4 +1,4 @@
-import { english, englishSingular, type Message } from "./messages";
+import { chinese, english, englishSingular, type Message } from "./messages";
 import { CHARACTER_ZH, type Character } from "./types";
 
 export type Locale = "zh-Hant" | "en";
@@ -14,7 +14,7 @@ export function createI18n(locale: Locale) {
     t: (message: Message, values: Record<string, string | number> = {}) => {
       const text = locale === "en"
         ? (values.count === 1 ? englishSingular[message] : undefined) ?? english[message]
-        : message;
+        : chinese[message];
       return text.replace(/\{(\w+)\}/g, (placeholder, key: string) =>
         key in values ? String(values[key]) : placeholder,
       );

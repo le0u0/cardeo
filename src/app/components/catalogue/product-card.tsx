@@ -1,9 +1,9 @@
 "use client";
-import { useI18n } from "@/components/i18n/locale-provider";
+import { useI18n } from "@/app/components/i18n/locale-provider";
 import Link from "next/link";
 import { Plus, Check } from "lucide-react";
-import { CardArt } from "@/components/catalogue/card-art";
-import { useCart } from "@/components/cart/cart-provider";
+import { CardArt } from "@/app/components/catalogue/card-art";
+import { useCart } from "@/app/components/cart/cart-provider";
 import { money, type Product } from "@/lib/types";
 export function ProductCard({
   product,
@@ -23,7 +23,7 @@ export function ProductCard({
       <Link
         className="product-image-link"
         href={`/cards/${product.slug}`}
-        aria-label={t("查看 {p0}", { p0: product.name })}
+        aria-label={t("viewValue", { p0: product.name })}
       >
         <CardArt product={product} referenceArt={referenceArt} />
       </Link>
@@ -41,10 +41,10 @@ export function ProductCard({
             className="add-button"
             disabled={quantity >= 10}
             onClick={() => cart.add(product.id)}
-            aria-label={t("將 {p0} 加入購物袋", { p0: product.name })}
+            aria-label={t("addValueToBag", { p0: product.name })}
           >
             {quantity ? <Check size={17} /> : <Plus size={17} />}
-            <span>{quantity ? t("已加入 {p0}", { p0: quantity }) : t("加入")}</span>
+            <span>{quantity ? t("addedValue", { p0: quantity }) : t("add")}</span>
           </button>
         </div>
       </div>

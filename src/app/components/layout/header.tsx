@@ -1,10 +1,10 @@
 "use client";
-import { LanguageSwitch, useI18n } from "@/components/i18n/locale-provider";
+import { LanguageSwitch, useI18n } from "@/app/components/i18n/locale-provider";
 import Link from "next/link";
 import { ShoppingBag, X, Menu, ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useCart } from "@/components/cart/cart-provider";
+import { useCart } from "@/app/components/cart/cart-provider";
 import { money } from "@/lib/types";
 export function MerchantMark() {
   return (
@@ -20,19 +20,20 @@ export function Header() {
   const path = usePathname();
   const drawer = useRef<HTMLDialogElement>(null);
   const menu = useRef<HTMLDialogElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <>
       <header className="site-header">
         <div className="container header-inner">
-          <Link href="/" className="brand" aria-label={t("Cardeo 首頁")}>
+          <Link href="/" className="brand" aria-label={t("cardeoHome")}>
             <MerchantMark />
             <span>
               Cardeo
             </span>
           </Link>
-          <nav className="desktop-nav" aria-label={t("主要導覽")}>
+          <nav className="desktop-nav" aria-label={t("mainNavigation")}>
             <Link href="/" aria-current={path === "/" ? "page" : undefined}>
-              {t("商人小店")}</Link>
+              {t("home")}</Link>
             <Link
               href="/shop"
               aria-current={
@@ -41,29 +42,33 @@ export function Header() {
                   : undefined
               }
             >
-              {t("瀏覽卡牌")}</Link>
+              {t("browseCards")}</Link>
             <Link
               href="/about"
               aria-current={path === "/about" ? "page" : undefined}
             >
-              {t("關於小店")}</Link>
+              {t("about")}</Link>
           </nav>
           <div className="header-actions">
             <LanguageSwitch />
-            <span className="currency-note">{t("香港 / HKD")}</span>
             <button
               className="bag-button"
               onClick={() => drawer.current?.showModal()}
-              aria-label={t("開啟購物袋，{count} 張卡牌", { count: cart.count })}
+              aria-label={t("openBagCountCards", { count: cart.count })}
             >
               <ShoppingBag size={19} />
-              <span className="bag-word">{t("購物袋")}</span>
+              <span className="bag-word">{t("bag")}</span>
               <span className="bag-count">{cart.count}</span>
             </button>
             <button
               className="icon-button mobile-menu"
-              aria-label={t("開啟導覽")}
-              onClick={() => menu.current?.showModal()}
+              aria-label={t("openNavigation")}
+              aria-expanded={menuOpen}
+              aria-controls="site-menu"
+              onClick={() => {
+                setMenuOpen(true);
+                menu.current?.showModal();
+              }}
             >
               <Menu />
             </button>
@@ -80,10 +85,10 @@ export function Header() {
       >
         <div className="dialog-inner">
           <div className="dialog-heading">
-            <h2 id="bag-title">{t("你的購物袋")}</h2>
+            <h2 id="bag-title">{t("yourBag")}</h2>
             <button
               className="icon-button"
-              aria-label={t("關閉購物袋")}
+              aria-label={t("closeBag")}
               onClick={() => drawer.current?.close()}
             >
               <X />
@@ -97,23 +102,23 @@ export function Header() {
                   return (
                     <li key={item.productId}>
                       <div>
-                        <strong>{p?.name ?? t("已下架卡牌")}</strong>
+                        <strong>{p?.name ?? t("unavailableCard")}</strong>
                         <small>
-                          {t("{count} 張", { count: item.quantity })} ·{" "}
-                          {p ? money(p.price_minor * item.quantity) : t("請移除")}
+                          {t("countCards", { count: item.quantity })} ·{" "}
+                          {p ? money(p.price_minor * item.quantity) : t("pleaseRemove")}
                         </small>
                       </div>
                       <button
                         className="text-button"
                         onClick={() => cart.remove(item.productId)}
                       >
-                        {t("移除")}</button>
+                        {t("remove")}</button>
                     </li>
                   );
                 })}
               </ul>
               <div className="mini-total">
-                <span>{t("小計")}</span>
+                <span>{t("subtotal")}</span>
                 <strong>{money(cart.total)}</strong>
               </div>
               <Link
@@ -121,31 +126,31 @@ export function Header() {
                 href="/cart"
                 onClick={() => drawer.current?.close()}
               >
-                {t("查看購物袋")}<ChevronRight size={17} />
+                {t("viewBag")}<ChevronRight size={17} />
               </Link>
             </>
           ) : (
             <div className="empty-state">
               <ShoppingBag size={42} />
-              <h3>{t("好牌，還在等你。")}</h3>
-              <p>{t("逛逛卡牌，找一張合眼緣的。")}</p>
+              <h3>{t("yourNextCardIsWaiting")}</h3>
+              <p>{t("browseTheCardsAndFindAFavourite")}</p>
               <Link
                 href="/shop"
                 className="button primary"
                 onClick={() => drawer.current?.close()}
               >
-                {t("瀏覽卡牌")}</Link>
+                {t("browseCards")}</Link>
             </div>
           )}
         </div>
       </dialog>
-      <dialog ref={menu} className="side-dialog" aria-labelledby="menu-title">
+      <dialog id="site-menu" ref={menu} className="side-dialog" aria-labelledby="menu-title" onClose={() => setMenuOpen(false)}>
         <div className="dialog-inner">
           <div className="dialog-heading">
-            <h2 id="menu-title">{t("導覽")}</h2>
+            <h2 id="menu-title">{t("navigation")}</h2>
             <button
               className="icon-button"
-              aria-label={t("關閉導覽")}
+              aria-label={t("closeNavigation")}
               onClick={() => menu.current?.close()}
             >
               <X />
@@ -153,9 +158,9 @@ export function Header() {
           </div>
           <nav className="mobile-nav">
             {[
-              ["/", t("商人小店")],
-              ["/shop", t("瀏覽卡牌")],
-              ["/about", t("關於小店")],
+              ["/", t("home")],
+              ["/shop", t("browseCards")],
+              ["/about", t("about")],
             ].map(([href, label]) => (
               <Link
                 href={href}

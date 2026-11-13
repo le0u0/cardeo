@@ -1,9 +1,9 @@
 "use client";
-import { useI18n } from "@/components/i18n/locale-provider";
+import { useI18n } from "@/app/components/i18n/locale-provider";
 import { useState } from "react";
 import { ShoppingBag } from "lucide-react";
-import { useCart } from "@/components/cart/cart-provider";
-import { Quantity } from "@/components/cart/quantity";
+import { useCart } from "@/app/components/cart/cart-provider";
+import { Quantity } from "@/app/components/cart/quantity";
 import { money, type Product } from "@/lib/types";
 export function BuyCard({ product }: { product: Product }) {
   const { t } = useI18n();
@@ -15,7 +15,7 @@ export function BuyCard({ product }: { product: Product }) {
     <div className="buy-card">
       <div className="buy-price">
         <strong>{money(product.price_minor)}</strong>
-        <span>{t("每張 · 示範價格")}</span>
+        <span>{t("perCardDemoPrice")}</span>
       </div>
       <div className="buy-actions">
         <Quantity
@@ -29,12 +29,12 @@ export function BuyCard({ product }: { product: Product }) {
           onClick={() => cart.add(product.id, quantity)}
         >
           <ShoppingBag size={18} />
-          {t("加入購物袋")}</button>
+          {t("addToBag")}</button>
       </div>
       <p className="fine-print">
         {existing + quantity > 10
-          ? t("購物袋內每款最多 10 張，請調整數量。")
-          : t("小計 {p0} · 每款最多 10 張", { p0: money(product.price_minor * quantity) })}
+          ? t("cartQuantityLimit")
+          : t("subtotalAndQuantityLimit", { p0: money(product.price_minor * quantity) })}
       </p>
     </div>
   );

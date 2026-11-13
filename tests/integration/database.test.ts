@@ -3,7 +3,7 @@ import { PGlite } from "@electric-sql/pglite";
 import { readFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import type { CheckoutInput, CheckoutResult, Product } from "../../src/lib/types";
-import { fingerprint, parseCheckout } from "../../src/lib/checkout";
+import { fingerprint, parseCheckout } from "../../src/server/checkout";
 const db = new PGlite();
 async function checkout(
   patch: Partial<CheckoutInput> = {},

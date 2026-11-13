@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/components/i18n/locale-provider";
+import { useI18n } from "@/app/components/i18n/locale-provider";
 import {
   createContext,
   useContext,
@@ -102,7 +102,7 @@ export function CartProvider({
         setCatalogueReady(true);
       })
       .catch(() => {
-        if (!controller.signal.aborted) setCatalogueError(t("暫時無法載入卡牌，請重試。"));
+        if (!controller.signal.aborted) setCatalogueError(t("catalogueLoadFailed"));
       });
     return () => controller.abort();
   }, [attempt, t]);
@@ -134,11 +134,11 @@ export function CartProvider({
     const current = decode(snapshot());
     const old = current.find((i) => i.productId === id);
     if (old && old.quantity + quantity > 10) {
-      setNotice(t("每張卡最多可選 10 張。"));
+      setNotice(t("youCanChooseUpTo10Of"));
       return;
     }
     if (!old && current.length >= 30) {
-      setNotice(t("購物袋最多可放 30 款卡牌。"));
+      setNotice(t("yourBagCanHoldUpTo30"));
       return;
     }
     save(
@@ -148,7 +148,7 @@ export function CartProvider({
           )
         : [...current, { productId: id, quantity }],
     );
-    setNotice(t("{p0} 已加入購物袋。", { p0: product.name }));
+    setNotice(t("valueAddedToYourBag", { p0: product.name }));
   }
   const value = {
     products,
@@ -202,12 +202,12 @@ export function CatalogueContent({ children }: { children: ReactNode }) {
     return (
       <div className="container page-pad empty-state" role="alert">
         <p>{cart.catalogueError}</p>
-        <button className="button primary" onClick={cart.reloadCatalogue}>{t("重新載入")}</button>
+        <button className="button primary" onClick={cart.reloadCatalogue}>{t("reload")}</button>
       </div>
     );
   }
   if (!cart.catalogueReady) {
-    return <div className="container page-pad" role="status">{t("正在整理卡牌…")}</div>;
+    return <div className="container page-pad" role="status">{t("loadingCards")}</div>;
   }
   return children;
 }

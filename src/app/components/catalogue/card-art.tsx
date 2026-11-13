@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/components/i18n/locale-provider";
+import { useI18n } from "@/app/components/i18n/locale-provider";
 import Image from "next/image";
 import { useState } from "react";
 import { Sword, Leaf, Orbit, Crown, Skull } from "lucide-react";
@@ -33,7 +33,7 @@ export function CardArt({
       {referenceArt && !failed && (
         <Image
           src={product.image_url}
-          alt={t("{p0} 卡牌", { p0: product.name })}
+          alt={t("valueCard", { p0: product.name })}
           fill
           sizes="(max-width: 600px) 45vw, (max-width: 1000px) 30vw, 280px"
           priority={priority}

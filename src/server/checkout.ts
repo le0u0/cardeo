@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import type { CheckoutInput } from "./types";
+import type { CheckoutInput } from "../lib/types";
 export function parseCheckout(value: unknown): CheckoutInput {
   if (!value || typeof value !== "object") throw new Error("Invalid request");
   const v = value as Record<string, unknown>;

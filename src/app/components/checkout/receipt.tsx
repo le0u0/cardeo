@@ -1,9 +1,9 @@
 "use client";
-import { useI18n } from "@/components/i18n/locale-provider";
+import { useI18n } from "@/app/components/i18n/locale-provider";
 import Link from "next/link";
 import { Check, ArrowRight, Copy } from "lucide-react";
 import { money, type Receipt } from "@/lib/types";
-import { useCart } from "@/components/cart/cart-provider";
+import { useCart } from "@/app/components/cart/cart-provider";
 export function ReceiptView({ receipt }: { receipt: Receipt }) {
   const { t, locale } = useI18n();
   const cart = useCart();
@@ -13,24 +13,24 @@ export function ReceiptView({ receipt }: { receipt: Receipt }) {
         <span className="success-seal">
           <Check size={30} />
         </span>
-        <h1>{t("好牌，已經集合。")}</h1>
-        <p>{t("示範訂單已完成。沒有收款，也不會寄送任何商品。")}</p>
+        <h1>{t("yourCardsAreAllHere")}</h1>
+        <p>{t("orderCompleteNotice")}</p>
       </div>
       <section className="receipt-paper">
         <div className="receipt-top">
           <div>
-            <small>{t("示範訂單編號")}</small>
+            <small>{t("demoOrderReference")}</small>
             <p>{receipt.reference}</p>
           </div>
           <button
             className="icon-button"
-            aria-label={t("複製訂單編號")}
+            aria-label={t("copyOrderReference")}
             onClick={async () => {
               try {
                 await navigator.clipboard.writeText(receipt.reference);
-                cart.notify(t("訂單編號已複製。"));
+                cart.notify(t("orderReferenceCopied"));
               } catch {
-                cart.notify(t("無法使用剪貼簿，請選取編號複製。"));
+                cart.notify(t("copyReferenceFailed"));
               }
             }}
           >
@@ -43,14 +43,14 @@ export function ReceiptView({ receipt }: { receipt: Receipt }) {
             timeStyle: "short",
             timeZone: "Asia/Hong_Kong",
           }).format(new Date(receipt.createdAt))}{" "}
-          {t("· 香港時間")}</p>
+          {t("hongKongTime")}</p>
         <div className="receipt-items">
           {receipt.items.map((item, i) => (
             <div key={`${item.name}-${i}`}>
               <span>
                 <strong>{item.name}</strong>
                 <small>
-                  {t("{count} 張", { count: item.quantity })} ×{" "}
+                  {t("countCards", { count: item.quantity })} ×{" "}
                   {money(item.unitPrice)}
                 </small>
               </span>
@@ -59,19 +59,19 @@ export function ReceiptView({ receipt }: { receipt: Receipt }) {
           ))}
         </div>
         <div className="summary-line">
-          <span>{t("模擬配送")}</span>
+          <span>{t("demoDelivery")}</span>
           <span>HK$0.00</span>
         </div>
         <div className="summary-total">
-          <span>{t("示範合計")}</span>
+          <span>{t("demoTotal")}</span>
           <strong>{money(receipt.total)}</strong>
         </div>
       </section>
       <div className="receipt-actions">
         <Link className="button primary" href="/shop">
-          {t("繼續尋寶")}<ArrowRight size={17} />
+          {t("findMoreCards")}<ArrowRight size={17} />
         </Link>
-        <p>{t("本頁收據只保留於目前分頁。關閉分頁後，可能無法再次查看。")}</p>
+        <p>{t("receiptSessionNotice")}</p>
       </div>
     </div>
   );

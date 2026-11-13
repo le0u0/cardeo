@@ -207,7 +207,9 @@ test("checkout API rejects cross-site and malformed requests; ignores browser pr
 
 test("language switch translates the storefront and persists through navigation and reload", async ({ page }) => {
   await page.goto("/shop?character=Ironclad");
-  await page.getByRole("button", { name: "切換語言", exact: true }).click();
+  await expect(page.getByRole("button", { name: "中文", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "EN", exact: true }).click();
+  await expect(page.getByRole("button", { name: "EN", exact: true })).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page.getByRole("heading", { name: "A place for every card." })).toBeVisible();
   await expect(page).toHaveURL(/character=Ironclad/);
@@ -216,8 +218,8 @@ test("language switch translates the storefront and persists through navigation 
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await page.goto("/about");
-  await expect(page.getByRole("heading", { name: "About this little shop." })).toBeVisible();
-  await page.getByRole("button", { name: "Switch language", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Sources and artwork." })).toBeVisible();
+  await page.getByRole("button", { name: "中文", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("lang", "zh-Hant");
-  await expect(page.getByRole("heading", { name: "關於這間小店。" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "資料與圖像來源。" })).toBeVisible();
 });

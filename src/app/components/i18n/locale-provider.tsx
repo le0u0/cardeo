@@ -36,20 +36,17 @@ export function useI18n() {
 }
 export function LanguageSwitch() {
   const { locale, t } = useI18n();
+  function changeLanguage(next: Locale) {
+    if (next === locale) return;
+    document.cookie = `${LOCALE_COOKIE}=${next}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`;
+    // Reload keeps server content, metadata and the document language in sync.
+    window.location.reload();
+  }
   return (
-    <select
-      className="language-switch"
-      aria-label={t("切換語言")}
-      value={locale}
-      onChange={(event) => {
-        const next = event.target.value as Locale;
-        document.cookie = `${LOCALE_COOKIE}=${next}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`;
-        // Reload keeps server content, metadata and the document language in sync.
-        window.location.reload();
-      }}
-    >
-      <option value="zh-Hant">繁體中文</option>
-      <option value="en">English</option>
-    </select>
+    <div className="language-switch" role="group" aria-label={t("switchLanguage")}>
+      <button type="button" lang="zh-Hant" aria-pressed={locale === "zh-Hant"} onClick={() => changeLanguage("zh-Hant")}>中文</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" lang="en" aria-pressed={locale === "en"} onClick={() => changeLanguage("en")}>EN</button>
+    </div>
   );
 }

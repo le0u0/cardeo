@@ -1,8 +1,8 @@
-import { getI18n } from "@/lib/i18n-server";
-import { SuccessPage } from "@/components/checkout/success-page";
+import { getI18n } from "@/server/i18n-server";
+import { SuccessPage } from "@/app/components/checkout/success-page";
 export async function generateMetadata() {
   const { t } = await getI18n();
-  return { title: t("示範訂單完成") };
+  return { title: t("demoOrderComplete") };
 }
 export default function Page() {
   return <SuccessPage />;
