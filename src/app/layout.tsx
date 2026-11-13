@@ -1,9 +1,9 @@
 import { getI18n } from "@/server/i18n-server";
-import { LocaleProvider } from "@/components/i18n/locale-provider";
+import { LocaleProvider } from "@/app/components/i18n/locale-provider";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CartProvider, CatalogueContent } from "@/components/cart/cart-provider";
-import { Header, MerchantMark } from "@/components/layout/header";
+import { CartProvider, CatalogueContent } from "@/app/components/cart/cart-provider";
+import { Header, MerchantMark } from "@/app/components/layout/header";
 import "./globals.css";
 export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {

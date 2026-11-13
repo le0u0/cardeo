@@ -3,9 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { getCatalogue } from "@/server/database";
-import { CardArt } from "@/components/catalogue/card-art";
-import { BuyCard } from "@/components/catalogue/buy-card";
-import { ProductCard } from "@/components/catalogue/product-card";
+import { CardArt } from "@/app/components/catalogue/card-art";
+import { BuyCard } from "@/app/components/catalogue/buy-card";
+import { ProductCard } from "@/app/components/catalogue/product-card";
 export async function generateMetadata({
   params,
 }: {
