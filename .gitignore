@@ -16,3 +16,8 @@ docs/
 
 # OS files
 .DS_Store
+
+# Cloudflare
+.open-next/
+.wrangler/
+.dev.vars

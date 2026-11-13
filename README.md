@@ -13,7 +13,7 @@ npm run dev
 
 Open http://127.0.0.1:3000. No account, API key or separate database install is needed locally. PGlite runs real PostgreSQL in-process and persists catalogue/orders in the ignored `.cardeo/` directory. Run only one application server against that directory at a time.
 
-The frontend is Next.js App Router, React, TypeScript and Tailwind CSS. Checkout is a Node.js Route Handler. The same PostgreSQL schema and checkout function run locally and on Supabase; embedded storage is never used on Vercel.
+The frontend is Next.js App Router, React, TypeScript and Tailwind CSS. Checkout is a Node.js Route Handler. The same PostgreSQL schema and checkout function run locally and on Supabase; embedded storage is never used when deployed (`HOSTED=true`).
 
 ## Features
 
@@ -59,7 +59,7 @@ Generated screenshots are under `.artifacts/screenshots/`. Override with `CARDEO
 
 ## Deploy
 
-Follow [the deployment guide](docs/deployment.md). Vercel requires a configured Supabase database and `CHECKOUT_RATE_SECRET`; it deliberately refuses local-file persistence. No payment gateway account is required.
+Follow [the deployment guide](docs/deployment.md). Cloudflare Workers (via `@opennextjs/cloudflare`, `npm run deploy`) require a configured Supabase database and `CHECKOUT_RATE_SECRET` (`wrangler secret put`); it deliberately refuses local-file persistence. No payment gateway account is required.
 
 The existing release workflow is preserved. CI validates pull requests without hosted database credentials. No public deployment, remote database provisioning or credential configuration is implied by the local build.
 

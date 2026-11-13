@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { parseCheckout } from "@/server/checkout";
 import { submitCheckout } from "@/server/database";
 export async function POST(request: NextRequest) {
-  const protocol = process.env.VERCEL ? "https:" : request.nextUrl.protocol;
+  const protocol = process.env.HOSTED ? "https:" : request.nextUrl.protocol;
   const expectedOrigin = `${protocol}//${request.headers.get("host")}`;
   if (request.headers.get("origin") !== expectedOrigin)
     return NextResponse.json(
@@ -42,11 +42,11 @@ export async function POST(request: NextRequest) {
   try {
     const secret =
       process.env.CHECKOUT_RATE_SECRET ||
-      (!process.env.VERCEL ? "local-development-only" : "");
+      (!process.env.HOSTED ? "local-development-only" : "");
     if (!secret) throw new Error("Missing checkout rate secret");
-    // Cloudflare sets x-vercel-forwarded-for. Local use shares one bucket.
-    const address = process.env.VERCEL
-      ? request.headers.get("x-vercel-forwarded-for") || "unknown"
+    // Cloudflare sets cf-connecting-ip. Local use shares one bucket.
+    const address = process.env.HOSTED
+      ? request.headers.get("cf-connecting-ip") || "unknown"
       : "local";
     const window = Math.floor(Date.now() / 900000);
     const bucket = createHmac("sha256", secret)

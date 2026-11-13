@@ -6,6 +6,8 @@ export default defineConfig([
   ...nextTs,
   globalIgnores([
     ".next/**",
+    ".open-next/**",
+    ".wrangler/**",
     "next-env.d.ts",
     ".cardeo/**",
     ".artifacts/**",
