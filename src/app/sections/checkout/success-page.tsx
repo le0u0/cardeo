@@ -1,9 +1,9 @@
 "use client";
-import { useI18n } from "@/app/components/i18n/locale-provider";
+import { useI18n } from "@/app/providers/locale-provider";
 import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { FileQuestion } from "lucide-react";
-import { ReceiptView } from "@/app/components/checkout/receipt";
+import { ReceiptView } from "@/app/widgets/receipt";
 import { type Receipt } from "@/lib/types";
 function snapshot() {
   try {

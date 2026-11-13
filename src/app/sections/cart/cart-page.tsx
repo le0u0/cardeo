@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/app/components/i18n/locale-provider";
+import { useI18n } from "@/app/providers/locale-provider";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -8,9 +8,9 @@ import {
   Trash2,
   ShieldCheck,
 } from "lucide-react";
-import { useCart } from "@/app/components/cart/cart-provider";
-import { CardArt } from "@/app/components/catalogue/card-art";
-import { Quantity } from "@/app/components/cart/quantity";
+import { useCart } from "@/app/providers/cart-provider";
+import { CardArt } from "@/app/widgets/card-art";
+import { Quantity } from "@/app/widgets/quantity";
 import { money } from "@/lib/types";
 export function CartPage({ referenceArt }: { referenceArt: boolean }) {
   const { t, characterName } = useI18n();

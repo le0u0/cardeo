@@ -77,8 +77,7 @@ The `docs/` directory is local and ignored by Git; these files are not included 
 
 ## Project structure
 
-- `src/app/`: routes, API handlers and global styles.
-- `src/app/components/`: UI grouped into catalogue, cart, checkout, layout and i18n; component unit tests belong beside their components.
+- `src/app/`: `(pages)/` routes, `sections/` page blocks, `widgets/` reusable pieces, `providers/` context, `api/` handlers and global styles.
 - `src/server/`: server-side API handlers, database access, checkout validation and language lookup.
 - `src/lib/`: shared types and translations.
 - `tests/integration/`: PostgreSQL integration tests.

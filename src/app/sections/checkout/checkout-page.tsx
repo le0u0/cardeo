@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/app/components/i18n/locale-provider";
+import { useI18n } from "@/app/providers/locale-provider";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -11,8 +11,8 @@ import {
   Package,
   LoaderCircle,
 } from "lucide-react";
-import { useCart } from "@/app/components/cart/cart-provider";
-import { ReceiptView } from "@/app/components/checkout/receipt";
+import { useCart } from "@/app/providers/cart-provider";
+import { ReceiptView } from "@/app/widgets/receipt";
 import { money, type CheckoutResult, type Receipt } from "@/lib/types";
 export function CheckoutPage() {
   const { t } = useI18n();

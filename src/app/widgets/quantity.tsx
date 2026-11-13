@@ -1,5 +1,5 @@
 "use client";
-import { useI18n } from "@/app/components/i18n/locale-provider";
+import { useI18n } from "@/app/providers/locale-provider";
 import { Minus, Plus } from "lucide-react";
 export function Quantity({
   name,

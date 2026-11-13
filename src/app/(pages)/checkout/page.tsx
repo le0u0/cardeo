@@ -1,9 +1,9 @@
 import { getI18n } from "@/server/i18n-server";
-import { SuccessPage } from "@/app/components/checkout/success-page";
+import { CheckoutPage } from "@/app/sections/checkout/checkout-page";
 export async function generateMetadata() {
   const { t } = await getI18n();
-  return { title: t("demoOrderComplete") };
+  return { title: t("demoCheckout") };
 }
 export default function Page() {
-  return <SuccessPage />;
+  return <CheckoutPage />;
 }

@@ -1,9 +1,9 @@
 "use client";
-import { useI18n } from "@/app/components/i18n/locale-provider";
+import { useI18n } from "@/app/providers/locale-provider";
 import Link from "next/link";
 import { Check, ArrowRight, Copy } from "lucide-react";
 import { money, type Receipt } from "@/lib/types";
-import { useCart } from "@/app/components/cart/cart-provider";
+import { useCart } from "@/app/providers/cart-provider";
 export function ReceiptView({ receipt }: { receipt: Receipt }) {
   const { t, locale } = useI18n();
   const cart = useCart();
