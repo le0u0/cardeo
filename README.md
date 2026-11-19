@@ -1,5 +1,31 @@
 # Cardeo
 
-An unofficial Slay the Spire 2 card shop demo for Hong Kong. Browse 30 curated cards, filter by character and price, keep a cart, and complete a simulated order. No real payments, deliveries, accounts or customer details.
+A Slay the Spire 2 card shop. Browse cards, explore collections, and build your cart.
 
-Card artwork and game material belong to their respective rights holders. Not affiliated with Mega Crit or Mobalytics.
+## Pages
+
+- **Home** — featured cards and character collections.
+- **Shop** — browse, filter, and sort cards.
+- **Card details** — view a card and related cards.
+- **Cart** — review and adjust selected cards.
+- **Checkout** — complete an order and view the receipt.
+- **About** — learn about the site and its credits.
+
+## Project structure
+
+```text
+src/
+  app/          Pages, shared components, and styles
+  lib/          Shared types and translations
+  server/       Catalogue, checkout, and database logic
+public/         Fonts and other public assets
+tests/          Integration and browser tests
+configs/        Test and lint configuration
+.github/        GitHub workflows
+```
+
+Page-specific components and styles live alongside their routes in `src/app/`.
+
+## Pricing direction
+
+The backend will determine prices from card rarity and provide card information and prices through its API. The frontend displays the returned data.
