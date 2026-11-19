@@ -1,5 +1,5 @@
 "use client";
-import { LocaleProvider, useI18n } from "@/app/_common/providers/locale-provider";
+import { LocaleProvider, useI18n } from "@/app/_common/context/locale-context/locale-context";
 export default function GlobalError({ reset }: { reset: () => void }) {
   return <LocaleProvider><GlobalErrorContent reset={reset} /></LocaleProvider>;
 }

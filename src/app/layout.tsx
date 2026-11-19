@@ -1,10 +1,10 @@
 import "./_common/globals.css";
 import { getI18n } from "@/server/i18n-server";
-import { LocaleProvider } from "@/app/_common/providers/locale-provider";
+import { LocaleProvider } from "@/app/_common/context/locale-context/locale-context";
 import type { Metadata } from "next";
-import { CartProvider, CatalogueContent } from "@/app/_common/providers/cart-provider";
-import { Header } from "@/app/_common/sections/header";
-import { Footer } from "@/app/_common/sections/footer";
+import { CartProvider, CatalogueContent } from "@/app/_common/context/cart-context/cart-context";
+import { Header } from "@/app/_common/_header/header";
+import { Footer } from "@/app/_common/_footer/footer";
 import "./layout.css";
 export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
