@@ -25,6 +25,19 @@ configs/        Test and lint configuration
 ```
 
 Page-specific components and styles live alongside their routes in `src/app/`.
+Folders prefixed with `_` hold private components and do not create routes.
+`_common/` holds shared widgets, context, and styles; `_home/` holds home page components.
+`app/api/` contains server-side API endpoints.
+
+Next.js recognizes these special files by name and location:
+
+- `page.tsx` defines a route's page.
+- `layout.tsx` wraps pages beneath its route; the root layout wraps the app.
+- `loading.tsx` provides a loading screen for routes beneath it.
+- `error.tsx` handles errors in its route segment; `global-error.tsx` handles root layout errors.
+- `not-found.tsx` displays the not-found page.
+
+Their associated CSS files are ordinary stylesheets, not special Next.js files.
 
 ## Pricing direction
 
