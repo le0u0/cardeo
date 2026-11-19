@@ -22,6 +22,11 @@ export default defineConfig({
     url: "http://127.0.0.1:3100",
     reuseExistingServer: false,
     timeout: 60000,
-    env: { CARDEO_DATABASE_DIR: join(tmpdir(), `cardeo-e2e-${process.pid}`) },
+    env: {
+      CARDEO_DATABASE_DIR: join(tmpdir(), `cardeo-e2e-${process.pid}`),
+      SUPABASE_URL: "",
+      SUPABASE_SERVICE_ROLE_KEY: "",
+      HOSTED: "",
+    },
   },
 });
