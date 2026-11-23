@@ -1,4 +1,4 @@
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import { Suspense } from "react";
 import { Shop } from "@/app/shop/_shop/shop";
 export async function generateMetadata() {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import { MerchantMark } from "@/app/_common/_header/header";
 import "./footer.css";
 

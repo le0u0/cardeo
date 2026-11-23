@@ -1,6 +1,6 @@
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import { notFound } from "next/navigation";
-import { getCatalogue } from "@/server/database";
+import { getCatalogue } from "@/server/database/database";
 import { CardDetail } from "@/app/cards/[id]/_card-detail/card-detail";
 import { RelatedCards } from "@/app/cards/[id]/_related-cards/related-cards";
 export async function generateMetadata({

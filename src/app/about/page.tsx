@@ -1,4 +1,4 @@
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import { ArrowUpRight } from "lucide-react";
 import "./about.css";
 export async function generateMetadata() {

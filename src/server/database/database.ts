@@ -1,7 +1,7 @@
 import "server-only";
 import { cache } from "react";
-import type { Product, CheckoutInput, CheckoutResult } from "../lib/types";
-import { fingerprint } from "./checkout";
+import type { Product, CheckoutInput, CheckoutResult } from "@/lib/types";
+import { fingerprint } from "@/server/api/checkout/checkout";
 
 async function rpc<T>(
   name: "get_catalogue" | "demo_checkout",

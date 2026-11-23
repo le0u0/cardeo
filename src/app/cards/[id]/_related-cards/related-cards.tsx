@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import { ProductCard } from "@/app/_common/widgets/product-card/product-card";
 import type { Product } from "@/lib/types";
 import "./related-cards.css";

@@ -1,3 +1,3 @@
-export { POST } from "@/server/api/demo-checkout";
+export { POST } from "@/server/api/checkout/handler";
 
 export const runtime = "nodejs";

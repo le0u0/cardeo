@@ -1,7 +1,7 @@
 import { createHmac } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { parseCheckout } from "@/server/checkout";
-import { submitCheckout } from "@/server/database";
+import { parseCheckout } from "@/server/api/checkout/checkout";
+import { submitCheckout } from "@/server/database/database";
 export async function POST(request: NextRequest) {
   const protocol = process.env.HOSTED ? "https:" : request.nextUrl.protocol;
   const expectedOrigin = `${protocol}//${request.headers.get("host")}`;

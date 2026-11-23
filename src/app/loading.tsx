@@ -1,4 +1,4 @@
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import "./loading.css";
 export default async function Loading() {
   const { t } = await getI18n();

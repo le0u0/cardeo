@@ -1,5 +1,5 @@
 import "./_common/globals.css";
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import { LocaleProvider } from "@/app/_common/context/locale-context/locale-context";
 import type { Metadata } from "next";
 import { CartProvider, CatalogueContent } from "@/app/_common/context/cart-context/cart-context";

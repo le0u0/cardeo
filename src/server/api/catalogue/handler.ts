@@ -1,6 +1,6 @@
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import { NextResponse } from "next/server";
-import { getCatalogue } from "@/server/database";
+import { getCatalogue } from "@/server/database/database";
 
 
 export async function GET() {

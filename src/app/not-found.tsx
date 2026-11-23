@@ -1,4 +1,4 @@
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import Link from "next/link";
 import { Layers } from "lucide-react";
 export default async function NotFound() {

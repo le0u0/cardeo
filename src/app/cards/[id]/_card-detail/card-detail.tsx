@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { getI18n } from "@/server/i18n-server";
+import { getI18n } from "@/server/i18n/i18n-server";
 import { CardArt } from "@/app/_common/widgets/card-art/card-art";
 import { BuyCard } from "@/app/_common/widgets/buy-card/buy-card";
 import type { Product } from "@/lib/types";
