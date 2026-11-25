@@ -1,21 +1,20 @@
 "use client";
 import { useI18n } from "@/app/_common/context/locale-context/locale-context";
 import { CHARACTERS, type Character } from "@/lib/types";
-import { useCart } from "@/app/_common/context/cart-context/cart-context";
 import "./filter-fields.css";
 export type Filters = { character: string; max: number };
 export function FilterFields({
   value,
   change,
   prefix,
+  maxPrice,
 }: {
   value: Filters;
   change: (key: keyof Filters, value: string | number) => void;
   prefix: string;
+  maxPrice: number;
 }) {
   const { t, characterName } = useI18n();
-  const { products } = useCart();
-  const maxPrice = Math.max(1, ...products.map((p) => Math.ceil(p.price_minor / 100)));
   return (
     <>
       <fieldset>

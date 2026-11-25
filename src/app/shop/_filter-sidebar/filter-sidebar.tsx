@@ -7,10 +7,12 @@ export function FilterSidebar({
   filters,
   change,
   reset,
+  maxPrice,
 }: {
   filters: Filters;
   change: (key: keyof Filters, value: string | number) => void;
   reset: () => void;
+  maxPrice: number;
 }) {
   const { t } = useI18n();
   return (
@@ -27,7 +29,7 @@ export function FilterSidebar({
           <RotateCcw size={15} />
         </button>
       </div>
-      <FilterFields value={filters} change={change} prefix="desktop" />
+      <FilterFields value={filters} change={change} prefix="desktop" maxPrice={maxPrice} />
     </aside>
   );
 }

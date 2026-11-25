@@ -49,7 +49,7 @@ export function FilterDrawer({
           change={(key, value) =>
             setDraft((old) => ({ ...old, [key]: value }))
           }
-          prefix="mobile"
+          prefix="mobile" maxPrice={maxPrice}
         />
         <div className="drawer-actions">
           <button

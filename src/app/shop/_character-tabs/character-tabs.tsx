@@ -1,17 +1,17 @@
 "use client";
 import { useI18n } from "@/app/_common/context/locale-context/locale-context";
-import { useCart } from "@/app/_common/context/cart-context/cart-context";
 import { CHARACTERS } from "@/lib/types";
 import "./character-tabs.css";
 export function CharacterTabs({
   selected,
   onChange,
+  counts, total,
 }: {
   selected: string;
+  counts: Record<string, number>; total: number;
   onChange: (character: string) => void;
 }) {
   const { t, characterName } = useI18n();
-  const { products } = useCart();
   return (
     <nav className="character-tabs" aria-label={t("browseByCharacter")}>
       <button
@@ -19,7 +19,7 @@ export function CharacterTabs({
         aria-pressed={selected === "all"}
         onClick={() => onChange("all")}
       >
-        {t("allCards")}<small>{products.length}</small>
+        {t("allCards")}<small>{total}</small>
       </button>
       {CHARACTERS.map((c) => (
         <button
@@ -30,7 +30,7 @@ export function CharacterTabs({
         >
           <span className="character-dot" />
           {characterName(c)}
-          <small>{products.filter((p) => p.character === c).length}</small>
+          <small>{counts[c] ?? 0}</small>
         </button>
       ))}
     </nav>

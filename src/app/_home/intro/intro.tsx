@@ -2,16 +2,14 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useI18n } from "@/app/_common/context/locale-context/locale-context";
-import { useCart } from "@/app/_common/context/cart-context/cart-context";
+import { useCards } from "@/app/_common/hooks/use-cards";
 import { CardArt } from "@/app/_common/widgets/card-art/card-art";
 import "./intro.css";
 
 export function HomeIntro({ referenceArt }: { referenceArt: boolean }) {
   const { t } = useI18n();
-  const { products } = useCart();
-  const showcase = ["silent-adrenaline", "ironclad-offering", "regent-big-bang"]
-    .map((id) => products.find((product) => product.id === id))
-    .filter((product) => !!product);
+  const { data } = useCards("id=adrenaline&id=offering&id=big_bang&limit=30");
+  const showcase = data?.items ?? [];
   return (
     <section className="hero container" data-enter>
       <div className="hero-copy">

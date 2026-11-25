@@ -45,7 +45,7 @@ export function CheckoutPage() {
           key: crypto.randomUUID(),
           signature: payloadSignature,
         };
-      const response = await fetch("/api/demo-checkout", {
+      const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

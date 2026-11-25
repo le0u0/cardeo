@@ -5,13 +5,14 @@ export const CHARACTERS = [
   "Regent",
   "Necrobinder",
 ] as const;
-export type Character = (typeof CHARACTERS)[number];
+export type Character = (typeof CHARACTERS)[number] | "Colorless" | "Event" | "Curse" | "Status" | "Quest" | "Token";
 export const CHARACTER_ZH: Record<Character, string> = {
   Ironclad: "鐵衛",
   Silent: "靜默",
   Defect: "故障機器人",
   Regent: "攝政王",
   Necrobinder: "死靈師",
+  Colorless: "無色", Event: "事件", Curse: "詛咒", Status: "狀態", Quest: "任務", Token: "衍生牌",
 };
 export const SOURCE_URL =
   "https://mobalytics.gg/slay-the-spire-2/tier-lists/cards";

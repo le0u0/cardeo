@@ -2,7 +2,7 @@
 import { useI18n } from "@/app/_common/context/locale-context/locale-context";
 import Image from "next/image";
 import { useState } from "react";
-import { Sword, Leaf, Orbit, Crown, Skull } from "lucide-react";
+import { Sword, Leaf, Orbit, Crown, Skull, Layers } from "lucide-react";
 import type { Product } from "@/lib/types";
 import "./card-art.css";
 const symbols = {
@@ -22,7 +22,7 @@ export function CardArt({
   referenceArt?: boolean;
 }) {
   const { t } = useI18n();
-  const Symbol = symbols[product.character];
+  const Symbol = symbols[product.character as keyof typeof symbols] ?? Layers;
   const [failed, setFailed] = useState(false);
   return (
     <div className={`card-art character-${product.character.toLowerCase()}`}>

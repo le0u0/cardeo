@@ -12,7 +12,7 @@ export function parseCheckout(value: unknown): CheckoutInput {
       const { productId, quantity } = item as Record<string, unknown>;
       if (
         typeof productId !== "string" ||
-        !/^[a-z0-9-]{1,100}$/.test(productId) ||
+        !/^[a-z0-9_-]{1,100}$/.test(productId) ||
         seen.has(productId)
       )
         throw new Error("Invalid or duplicate card");

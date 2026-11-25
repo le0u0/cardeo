@@ -2,16 +2,14 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useI18n } from "@/app/_common/context/locale-context/locale-context";
-import { useCart } from "@/app/_common/context/cart-context/cart-context";
+import { useCards } from "@/app/_common/hooks/use-cards";
 import { ProductCard } from "@/app/_common/widgets/product-card/product-card";
 import "./featured-picks.css";
 
 export function FeaturedPicks({ referenceArt }: { referenceArt: boolean }) {
   const { t } = useI18n();
-  const { products } = useCart();
-  const picks = ["defect-echo-form", "silent-adrenaline", "ironclad-feed", "necrobinder-friendship"]
-    .map((id) => products.find((product) => product.id === id))
-    .filter((product) => !!product);
+  const { data } = useCards("id=echo_form&id=adrenaline&id=feed&id=friendship&limit=30");
+  const picks = data?.items ?? [];
   return (
     <section className="container featured-section">
       <div className="section-heading">

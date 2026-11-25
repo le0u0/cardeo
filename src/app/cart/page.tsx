@@ -5,5 +5,5 @@ export async function generateMetadata() {
   return { title: t("bag") };
 }
 export default function Page() {
-  return <CartPage referenceArt={process.env.REFERENCE_ART !== "false"} />;
+  return <CartPage referenceArt={true} />;
 }

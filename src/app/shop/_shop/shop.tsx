@@ -3,7 +3,7 @@ import { useI18n } from "@/app/_common/context/locale-context/locale-context";
 import { useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
 import { CHARACTERS } from "@/lib/types";
-import { useCart } from "@/app/_common/context/cart-context/cart-context";
+import { useCards } from "@/app/_common/hooks/use-cards";
 import { type Filters } from "@/app/_common/widgets/filter-fields/filter-fields";
 import { Pagination } from "@/app/_common/widgets/pagination/pagination";
 import { ShopIntro } from "@/app/shop/_shop-intro/shop-intro";
@@ -20,9 +20,15 @@ export function Shop({
   referenceArt: boolean;
 }) {
   const { t } = useI18n();
-  const { products } = useCart();
-  const maxPrice = Math.max(1, ...products.map((p) => Math.ceil(p.price_minor / 100)));
   const params = useSearchParams();
+  const query = new URLSearchParams();
+  if (params.get("character") && params.get("character") !== "all") query.set("class", params.get("character")!);
+  if (params.get("q")) query.set("keyword", params.get("q")!);
+  if (params.get("sort")) query.set("sort", params.get("sort")!);
+  if (params.get("page")) query.set("page", params.get("page")!);
+  if (params.has("max") && Number.isFinite(Number(params.get("max")))) query.set("max", String(Math.max(0, Math.floor(Number(params.get("max")) * 100))));
+  const { data, error } = useCards(query.toString());
+  const maxPrice = Math.max(1, Math.ceil((data?.maxPrice ?? 10000) / 100));
   const q = params.get("q") ?? "";
   const sort = params.get("sort") ?? "featured";
   const filters: Filters = {
@@ -61,28 +67,10 @@ export function Shop({
   function change(key: keyof Filters, value: string | number) {
     update({ [key]: value });
   }
-  const matches = products
-    .filter(
-      (p) =>
-        (!q || p.name.toLowerCase().includes(q.toLowerCase().trim())) &&
-        (filters.character === "all" || p.character === filters.character) &&
-        p.price_minor <= filters.max * 100,
-    )
-    .sort((a, b) =>
-      sort === "price-asc"
-        ? a.price_minor - b.price_minor || a.name.localeCompare(b.name)
-        : sort === "price-desc"
-          ? b.price_minor - a.price_minor || a.name.localeCompare(b.name)
-          : sort === "name"
-            ? a.name.localeCompare(b.name)
-            : 0,
-    );
-  const pages = Math.max(1, Math.ceil(matches.length / 12));
-  const page = Math.min(
-    pages,
-    Math.max(1, Math.floor(Number(params.get("page")) || 1)),
-  );
-  const shown = matches.slice((page - 1) * 12, page * 12);
+  const matchCount = data?.total ?? 0;
+  const pages = Math.max(1, Math.ceil(matchCount / 12));
+  const page = Math.min(pages, Math.max(1, Math.floor(Number(params.get("page")) || 1)));
+  const shown = data?.items ?? [];
   const activeCount =
     Number(filters.character !== "all") +
     Number(filters.max < maxPrice);
@@ -93,11 +81,12 @@ export function Shop({
     <div className="container shop-page">
       <ShopIntro />
       <CharacterTabs
+        counts={data?.counts ?? {}} total={Object.values(data?.counts ?? {}).reduce((a, b) => a + b, 0)}
         selected={filters.character}
         onChange={(character) => change("character", character)}
       />
       <div className="catalogue-layout">
-        <FilterSidebar filters={filters} change={change} reset={reset} />
+        <FilterSidebar filters={filters} change={change} reset={reset} maxPrice={maxPrice} />
         <section className="catalogue-results" aria-label={t("cardCatalogue")}>
           <h2 className="sr-only">{t("cardCatalogue")}</h2>
           <ResultsToolbar
@@ -111,7 +100,7 @@ export function Shop({
             }}
           />
           <ResultsSummary
-            matchCount={matches.length}
+            matchCount={matchCount}
             page={page}
             q={q}
             activeCount={activeCount}
@@ -120,11 +109,11 @@ export function Shop({
             change={change}
             reset={reset}
           />
-          <ProductResults
+          {error ? <p role="alert">{t("catalogueLoadFailed")}</p> : !data ? <p role="status">{t("loadingCards")}</p> : <ProductResults
             products={shown}
             referenceArt={referenceArt}
             reset={reset}
-          />
+          />}
           {pages > 1 && (
             <Pagination page={page} pages={pages} onChange={(next) => update({ page: next })} />
           )}

@@ -70,7 +70,7 @@ type CartContextType = {
   reloadCatalogue: () => void;
   count: number;
   total: number;
-  add: (id: string, quantity?: number) => void;
+  add: (product: Product, quantity?: number) => void;
   setQuantity: (id: string, q: number) => void;
   remove: (id: string) => void;
   clear: () => void;
@@ -84,36 +84,42 @@ export function CartProvider({
 }) {
   const { t } = useI18n();
   const [products, setProducts] = useState<Product[]>([]);
-  const [catalogueReady, setCatalogueReady] = useState(false);
+  const [loadedIds, setLoadedIds] = useState("");
   const [catalogueError, setCatalogueError] = useState("");
   const [attempt, setAttempt] = useState(0);
+  const raw = useSyncExternalStore(subscribe, snapshot, () => "[]");
+  const items = useMemo(() => decode(raw), [raw]);
+  const ids = items.map(item => item.productId).join(",");
   useEffect(() => {
+    if (!ids) return;
+    const query = new URLSearchParams();
+    ids.split(",").forEach(id => query.append("id", id));
+    query.set("limit", "30");
     const controller = new AbortController();
-    fetch("/api/catalogue", {
+    fetch(`/api/cards?${query}`, {
       cache: "no-store",
       signal: AbortSignal.any([controller.signal, AbortSignal.timeout(12000)]),
     })
       .then(async (response) => {
         if (!response.ok) throw new Error("Catalogue unavailable");
-        return response.json() as Promise<Product[]>;
+        return response.json() as Promise<{ items: Product[] }>;
       })
       .then((data) => {
-        setProducts(data);
+        setProducts(data.items);
         setCatalogueError("");
-        setCatalogueReady(true);
+        setLoadedIds(ids);
       })
       .catch(() => {
         if (!controller.signal.aborted) setCatalogueError(t("catalogueLoadFailed"));
       });
     return () => controller.abort();
-  }, [attempt, t]);
-  const raw = useSyncExternalStore(subscribe, snapshot, () => "[]");
+  }, [attempt, t, ids]);
   const ready = useSyncExternalStore(
     () => () => {},
     () => true,
     () => false,
   );
-  const items = useMemo(() => decode(raw), [raw]);
+  const catalogueReady = !ids || loadedIds === ids;
   const [notice, setNotice] = useState("");
   useEffect(() => {
     if (notice) {
@@ -129,9 +135,8 @@ export function CartProvider({
         i.quantity,
     0,
   );
-  function add(id: string, quantity = 1) {
-    const product = products.find((p) => p.id === id);
-    if (!product) return;
+  function add(product: Product, quantity = 1) {
+    const id = product.id;
     const current = decode(snapshot());
     const old = current.find((i) => i.productId === id);
     if (old && old.quantity + quantity > 10) {
@@ -152,7 +157,7 @@ export function CartProvider({
     setNotice(t("valueAddedToYourBag", { p0: product.name }));
   }
   const value = {
-    products,
+    products: ids ? products : [],
     items,
     catalogueReady,
     catalogueError,

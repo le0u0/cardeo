@@ -38,7 +38,7 @@ export async function CardDetail({
           </p>
           <h1>{product.name}</h1>
           <p className="detail-description">
-            {t("cardCollectionDescription", { character: characterName(product.character) })}
+            {product.description}
           </p>
           <BuyCard product={product} />
         </div>

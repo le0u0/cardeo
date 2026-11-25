@@ -41,7 +41,7 @@ export function ProductCard({
           <button
             className="add-button"
             disabled={quantity >= 10}
-            onClick={() => cart.add(product.id)}
+            onClick={() => cart.add(product)}
             aria-label={t("addValueToBag", { p0: product.name })}
           >
             {quantity ? <Check size={17} /> : <Plus size={17} />}

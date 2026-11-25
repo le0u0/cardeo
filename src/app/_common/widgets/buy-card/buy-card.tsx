@@ -27,7 +27,7 @@ export function BuyCard({ product }: { product: Product }) {
         <button
           className="button primary"
           disabled={existing + quantity > 10}
-          onClick={() => cart.add(product.id, quantity)}
+          onClick={() => cart.add(product, quantity)}
         >
           <ShoppingBag size={18} />
           {t("addToBag")}</button>

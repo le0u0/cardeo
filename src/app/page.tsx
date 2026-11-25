@@ -3,7 +3,7 @@ import { CharacterCollections } from "@/app/_home/character-collections/characte
 import { FeaturedPicks } from "@/app/_home/featured-picks/featured-picks";
 
 export default function HomePage() {
-  const referenceArt = process.env.REFERENCE_ART !== "false";
+  const referenceArt = true;
   return (
     <>
       <HomeIntro referenceArt={referenceArt} />

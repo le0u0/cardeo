@@ -10,7 +10,7 @@ export default async function ShopPage() {
   return (
     <Suspense fallback={<p className="container page-pad">{t("loadingCards")}</p>}>
       <Shop
-        referenceArt={process.env.REFERENCE_ART !== "false"}
+        referenceArt={true}
       />
     </Suspense>
   );
